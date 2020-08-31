@@ -1,0 +1,18 @@
+﻿<Page x:Class="DecorationMaterialCalculator.Pages.ProgramEndPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:DecorationMaterialCalculator.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="700" d:DesignWidth="1200"
+      Title="ProgramEndPage">
+
+    <Border Padding="90 50" Background="White">
+        <TextBlock Text="Congratulations! Forms were generated successfully, you can safely exit the program now!" 
+                   FontSize="25"
+                   HorizontalAlignment="Center" 
+                   VerticalAlignment="Center"/>
+    </Border>
+
+</Page>

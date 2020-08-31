@@ -1,0 +1,104 @@
+﻿<Page x:Class="DecorationMaterialCalculator.Pages.PriceInputPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:DecorationMaterialCalculator.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="700" d:DesignWidth="1200"
+      Title="PriceInputPage">
+    <Page.Resources>
+        <Style x:Key="HeaderStyle">
+            <Setter Property="Control.FontSize" Value="20"/>
+        </Style>
+        <Style x:Key="ItemLabelStyle">
+            <Setter Property="Control.FontSize" Value="15"/>
+            <Setter Property="Control.Margin" Value="0 5"/>
+        </Style>
+        <Style x:Key="ItemBoxStyle">
+            <Setter Property="Control.FontSize" Value="15"/>
+            <Setter Property="Control.Padding" Value="3 2"/>
+            <Setter Property="Control.Margin" Value="0 5"/>
+            <Setter Property="Control.Width" Value="100"/>
+            <Setter Property="Control.HorizontalAlignment" Value="Left"/>
+        </Style>
+        <Style x:Key="ErrorMessageStyle">
+            <Setter Property="Control.Foreground" Value="Red"/>
+            <Setter Property="Control.FontSize" Value="15"/>
+            <Setter Property="Control.Margin" Value="0 5"/>
+        </Style>
+        <Style x:Key="ButtonStyle">
+            <Setter Property="Control.FontSize" Value="20"/>
+            <Setter Property="Control.Width" Value="150"/>
+            <Setter Property="Control.Margin" Value="0 15"/>
+        </Style>
+    </Page.Resources>
+    <Border Padding="100 50" Background="White">
+        <StackPanel>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0" Style="{StaticResource HeaderStyle}" Text="产品名称"/>
+                <TextBlock Grid.Column="1" Style="{StaticResource HeaderStyle}" Text="规格"/>
+                <TextBlock Grid.Column="2" Style="{StaticResource HeaderStyle}" Text="数量"/>
+                <TextBlock Grid.Column="3" Style="{StaticResource HeaderStyle}" Text="进货价"/>
+                <TextBlock Grid.Column="4" Style="{StaticResource HeaderStyle}" Text="报价"/>
+            </Grid>
+            
+            <Grid Name="buckleSection" Visibility="Collapsed">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0" Style="{StaticResource ItemLabelStyle}" Text="{Binding buckleItem.ProductName}"/>
+                <TextBlock Grid.Column="1" Style="{StaticResource ItemLabelStyle}" Text=""/>
+                <TextBlock Grid.Column="2" Style="{StaticResource ItemLabelStyle}" Text="{Binding buckleItem.Quantity}"/>
+                <TextBox Grid.Column="3"   Style="{StaticResource ItemBoxStyle}" Text="{Binding buckleItem.BuyPrice, Mode=OneWayToSource}"/>
+                <TextBox Grid.Column="4"   Style="{StaticResource ItemBoxStyle}" Text="{Binding buckleItem.SellPrice, Mode=OneWayToSource}"/>
+                <TextBlock Grid.Column="5" Style="{StaticResource ErrorMessageStyle}" Text="{Binding buckleItem.PriceInputErrorMessage}" />
+            </Grid>
+            
+            <ListView ItemsSource="{Binding summedItemList}" BorderThickness="0" Height="450">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock Grid.Column="0" Style="{StaticResource ItemLabelStyle}" Text="{Binding ProductName}" />
+                            <TextBlock Grid.Column="1" Style="{StaticResource ItemLabelStyle}" Text="{Binding Type}" />
+                            <TextBlock Grid.Column="2" Style="{StaticResource ItemLabelStyle}" Text="{Binding Quantity}" />
+                            <TextBox Grid.Column="3"   Style="{StaticResource ItemBoxStyle}" Text="{Binding BuyPrice, Mode=OneWayToSource}"  />
+                            <TextBox Grid.Column="4"   Style="{StaticResource ItemBoxStyle}" Text="{Binding SellPrice, Mode=OneWayToSource}" />
+                            <TextBlock Grid.Column="5" Style="{StaticResource ErrorMessageStyle}" Text="{Binding PriceInputErrorMessage}" />
+                        </Grid>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="ListViewItem">
+                        <Setter Property="HorizontalContentAlignment"  Value="Stretch"></Setter>
+                    </Style>
+                </ListView.ItemContainerStyle>
+            </ListView>
+            
+            <Button Content="生成报表" Click="GoToProgramEndPageButton_Click" Style="{StaticResource ButtonStyle}" HorizontalAlignment="Center"/>
+        </StackPanel>
+
+    </Border>
+</Page>
