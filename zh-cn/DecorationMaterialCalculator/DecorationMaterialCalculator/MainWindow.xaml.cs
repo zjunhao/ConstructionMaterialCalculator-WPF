@@ -44,7 +44,7 @@ namespace DecorationMaterialCalculator
                 }
             }
 
-            
+
             //Testing();
             //Testing2();
         }
@@ -65,9 +65,14 @@ namespace DecorationMaterialCalculator
         {
             List<InputItem> inputItemList = new List<InputItem>();
             inputItemList.Add(new InputItem("s-802锦绣纹", "b", "300*3600", "2+4", "顶", "东南卧室", "0.9", "东西铺贴"));
+            inputItemList.Add(new InputItem("s-802锦绣纹", "b", "400*3600", "5.9+4.7", "顶", "南西卧室", "3.6", "南北铺贴"));
+            inputItemList.Add(new InputItem("s-803锦绣纹", "b", "300*3600", "5.9+4.7", "顶", "南西卧室", "3.6", "南北铺贴"));
             inputItemList.Add(new InputItem("s-802锦绣纹", "b", "300*3600", "5.9+4.7", "顶", "南西卧室", "3.6", "南北铺贴"));
+            inputItemList.Add(new InputItem("s-802锦绣纹", "b", "300*800", "5.9+4.7", "顶", "南西卧室", "0.2", "南北铺贴"));
             inputItemList.Add(new InputItem("s-603金橡木", "x", "100*3000", "5.9+4.7+5.9+4.7", "踢脚线", "南西卧室"));
             inputItemList.Add(new InputItem("s-603金橡木", "x", "100*3000", "5.8", "踢脚线", "北卧室"));
+            inputItemList.Add(new InputItem("s-802锦绣纹", "b", "400*800", "5.9+4.7", "顶", "南西卧室", "0.2", "南北铺贴"));
+
 
             List<SummedItem> summedItemList = CalculationService.MergeInputItem(inputItemList);
 

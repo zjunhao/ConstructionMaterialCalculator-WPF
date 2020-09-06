@@ -215,7 +215,16 @@ namespace DecorationMaterialCalculator.Services
             Worksheet newWorksheet = new Worksheet();
             SheetData newSheetData = new SheetData();
 
-            FillSheetDataWithSummedItemListAndBuckleItem(newSheetData, summedItems, buckleItem, buyPriceNotSellPrice);
+            // If sheet is used for merchandise showing buy price, we'd like item in the sheet to be sorted
+            if (buyPriceNotSellPrice)
+            {
+                List<SummedItem> sortedSummedItems = SortSummedItemByNameAndType(summedItems);
+                FillSheetDataWithSummedItemListAndBuckleItem(newSheetData, sortedSummedItems, buckleItem, buyPriceNotSellPrice);
+            }
+            else
+            {
+                FillSheetDataWithSummedItemListAndBuckleItem(newSheetData, summedItems, buckleItem, buyPriceNotSellPrice);
+            }
 
             newWorksheet.Append(newSheetData);
             newWorksheetPart.Worksheet = newWorksheet;
@@ -547,6 +556,17 @@ namespace DecorationMaterialCalculator.Services
                 rowIndex++;
             }
 
+        }
+
+        private static List<SummedItem> SortSummedItemByNameAndType(List<SummedItem> items)
+        {
+            // deep copy items list to sortedItems list
+            List<SummedItem> sortedItems = items.Select(item => item.DeepCopy()).ToList();
+
+            // sort sortedItems list based on product name and type
+            sortedItems.Sort(new SummedItemComparer());
+
+            return sortedItems;
         }
         #endregion
     }

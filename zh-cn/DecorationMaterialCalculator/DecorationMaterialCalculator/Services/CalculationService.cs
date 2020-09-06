@@ -167,7 +167,7 @@ namespace DecorationMaterialCalculator.Services
             StringParserService.ParseType(item.Type, out int a, out int b);    // a, b in millimeter
             double aInMeter = a / 1000.0, bInMeter = b / 1000.0;
 
-            return (int) Math.Ceiling(size / (aInMeter - 0.01) / Math.Floor(bInMeter / unitLength));
+            return (int) Math.Ceiling(size / aInMeter / Math.Floor(bInMeter / unitLength));
         }
 
         private static void CalculateTotalLengthForX(int a, int b, int quantity, out double totalLength)

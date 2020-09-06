@@ -4,16 +4,16 @@
 winexe
 C#
 .cs
-C:\Users\JZhang\Desktop\DecorationMaterialCalculator\DecorationMaterialCalculator\obj\Release\netcoreapp3.1\
+M:\Projects\DecorationMaterialCalculator\zh-cn\DecorationMaterialCalculator\DecorationMaterialCalculator\obj\Release\netcoreapp3.1\
 DecorationMaterialCalculator
 none
 false
 TRACE;RELEASE;NETCOREAPP;NETCOREAPP3_1
-C:\Users\JZhang\Desktop\DecorationMaterialCalculator\DecorationMaterialCalculator\App.xaml
+M:\Projects\DecorationMaterialCalculator\zh-cn\DecorationMaterialCalculator\DecorationMaterialCalculator\App.xaml
 5-66887302
 
 15-64687131
-195-831476922
+195527672985
 MainWindow.xaml;Pages\ItemInputPage.xaml;Pages\PriceInputPage.xaml;Pages\ProgramEndPage.xaml;Pages\StartPage.xaml;
 
 False
