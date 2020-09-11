@@ -61,7 +61,7 @@ namespace DecorationMaterialCalculator.Pages {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/DecorationMaterialCalculator;component/pages/priceinputpage.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/DecorationMaterialCalculator;V1.0.0.0;component/pages/priceinputpage.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\Pages\PriceInputPage.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

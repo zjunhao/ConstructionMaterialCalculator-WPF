@@ -1,5 +1,5 @@
 ﻿DecorationMaterialCalculator
-
+1.0.0.0
 
 winexe
 C#
@@ -12,9 +12,9 @@ TRACE;RELEASE;NETCOREAPP;NETCOREAPP3_1
 M:\Projects\DecorationMaterialCalculator\zh-cn\DecorationMaterialCalculator\DecorationMaterialCalculator\App.xaml
 5-66887302
 
-16463359965
+17987802267
 195527672985
 MainWindow.xaml;Pages\ItemInputPage.xaml;Pages\PriceInputPage.xaml;Pages\ProgramEndPage.xaml;Pages\StartPage.xaml;
 
-True
+False
 

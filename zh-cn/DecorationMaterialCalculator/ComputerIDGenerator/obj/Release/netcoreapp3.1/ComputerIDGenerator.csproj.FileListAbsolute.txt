@@ -28,3 +28,5 @@ M:\Projects\DecorationMaterialCalculator\zh-cn\DecorationMaterialCalculator\Comp
 M:\Projects\DecorationMaterialCalculator\zh-cn\DecorationMaterialCalculator\ComputerIDGenerator\obj\Release\netcoreapp3.1\ComputerIDGenerator.csproj.CopyComplete
 M:\Projects\DecorationMaterialCalculator\zh-cn\DecorationMaterialCalculator\ComputerIDGenerator\obj\Release\netcoreapp3.1\ComputerIDGenerator.dll
 M:\Projects\DecorationMaterialCalculator\zh-cn\DecorationMaterialCalculator\ComputerIDGenerator\obj\Release\netcoreapp3.1\ComputerIDGenerator.pdb
+M:\Projects\DecorationMaterialCalculator\zh-cn\DecorationMaterialCalculator\ComputerIDGenerator\obj\Release\netcoreapp3.1\ComputerIDGenerator.csproj.CoreCompileInputs.cache
+M:\Projects\DecorationMaterialCalculator\zh-cn\DecorationMaterialCalculator\ComputerIDGenerator\obj\Release\netcoreapp3.1\ComputerIDGenerator.genruntimeconfig.cache
