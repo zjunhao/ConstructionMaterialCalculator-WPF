@@ -110,23 +110,29 @@ namespace DecorationMaterialCalculator.Models
 
     }
 
-    // Compare summedItem based on product name and type
-    // name a*b (s-802 300*3600); compare using name first, then a, then b
+    // Compare summedItem based on BorX, ProductName and Type
+    // e.g. 
+    // BorX ProductName m*n (b s-802 300*3600); 
+    // Sort by BorX ascending, then ProductName ascending, then m descending, then n descending
     public class SummedItemComparer: IComparer<SummedItem>
     {
         public int Compare(SummedItem item1, SummedItem item2)
         {
-            if (!item1.ProductName.Equals(item2.ProductName))
+            if (!item1.BorX.Equals(item2.BorX))
+            {
+                return item1.BorX.CompareTo(item2.BorX);
+            }
+            else if (!item1.ProductName.Equals(item2.ProductName))
             {
                 return item1.ProductName.CompareTo(item2.ProductName);
             } 
             else
             {
-                // item1 type: a1 * b1; item2 type: a2 * b2
-                StringParserService.ParseType(item1.Type, out int a1, out int b1);
-                StringParserService.ParseType(item2.Type, out int a2, out int b2);
+                // item1 type: m1 * n1; item2 type: m2 * n2
+                StringParserService.ParseType(item1.Type, out int m1, out int n1);
+                StringParserService.ParseType(item2.Type, out int m2, out int n2);
 
-                return (a1 != a2) ? (a1 - a2) : (b1 - b2);
+                return (m1 != m2) ? (m2 - m1) : (n2 - n1);
             }
         }
     }
