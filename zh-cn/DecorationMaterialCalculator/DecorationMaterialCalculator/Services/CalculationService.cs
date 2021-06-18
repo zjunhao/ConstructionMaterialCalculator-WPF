@@ -68,6 +68,8 @@ namespace DecorationMaterialCalculator.Services
                 summedItemList.Add(summedItem);
             }
 
+            summedItemList.Sort(new SummedItemComparer());
+
             return summedItemList;
         }
 
