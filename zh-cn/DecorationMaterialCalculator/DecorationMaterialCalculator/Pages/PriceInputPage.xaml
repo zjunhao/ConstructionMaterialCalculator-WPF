@@ -74,8 +74,8 @@
                 <TextBox Grid.Column="4"   Style="{StaticResource ItemBoxStyle}" Text="{Binding buckleItem.SellPrice, Mode=OneWayToSource}"/>
                 <TextBlock Grid.Column="5" Style="{StaticResource ErrorMessageStyle}" Text="{Binding buckleItem.PriceInputErrorMessage}" />
             </Grid>
-            
-            <ListView Grid.Row="2" ItemsSource="{Binding summedItemList}" BorderThickness="0" >
+
+            <ListView Grid.Row="2" ItemsSource="{Binding summedItemList}" BorderThickness="0" KeyboardNavigation.TabNavigation="Continue">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <Grid>
@@ -91,7 +91,7 @@
                             <TextBlock Grid.Column="0" Style="{StaticResource ItemLabelStyle}" Text="{Binding ProductName}" />
                             <TextBlock Grid.Column="1" Style="{StaticResource ItemLabelStyle}" Text="{Binding Type}" />
                             <TextBlock Grid.Column="2" Style="{StaticResource ItemLabelStyle}" Text="{Binding Quantity}" />
-                            <TextBox Grid.Column="3"   Style="{StaticResource ItemBoxStyle}" Text="{Binding BuyPrice, Mode=OneWayToSource}"  />
+                            <TextBox Grid.Column="3"   Style="{StaticResource ItemBoxStyle}" Text="{Binding BuyPrice, Mode=OneWayToSource}" />
                             <TextBox Grid.Column="4"   Style="{StaticResource ItemBoxStyle}" Text="{Binding SellPrice, Mode=OneWayToSource}" />
                             <TextBlock Grid.Column="5" Style="{StaticResource ErrorMessageStyle}" Text="{Binding PriceInputErrorMessage}" />
                         </Grid>
@@ -100,6 +100,7 @@
                 <ListView.ItemContainerStyle>
                     <Style TargetType="ListViewItem">
                         <Setter Property="HorizontalContentAlignment"  Value="Stretch"></Setter>
+                        <Setter Property="IsTabStop"  Value="False"></Setter>
                     </Style>
                 </ListView.ItemContainerStyle>
             </ListView>
