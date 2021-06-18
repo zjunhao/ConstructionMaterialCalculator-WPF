@@ -32,7 +32,7 @@
             <Setter Property="Control.Height" Value="30"/>
         </Style>
     </Page.Resources>
-    <Border Padding="20 30" Background="White">
+    <Border Padding="20 20" Background="White">
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="3*" />
@@ -40,7 +40,7 @@
             </Grid.ColumnDefinitions>
 
             <!--Item Input Panel-->
-            <StackPanel Grid.Column="0" Margin="0 0 18 0">
+            <StackPanel Grid.Column="0" Margin="0 30 18 0">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />
@@ -111,7 +111,7 @@
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="auto"/>
                 </Grid.RowDefinitions>
-                <Button Grid.Row="0" Content="删除选中项" Width="300" Height="25" FontSize="15" Click="DeleteInputItemButton_Click" />
+                <Button Grid.Row="0" Content="删除选中项" Width="300" Height="25" Margin="0 0 0 5" FontSize="15" Click="DeleteInputItemButton_Click" />
                 <Border Grid.Row="1" BorderBrush="Gray" BorderThickness="2" Margin="10 0">
                     <ListView Name="inputItemListView" ItemsSource="{Binding inputItemOC}">
                         <ListView.ItemTemplate>

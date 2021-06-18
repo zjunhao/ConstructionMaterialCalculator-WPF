@@ -33,9 +33,16 @@
             <Setter Property="Control.Margin" Value="0 15"/>
         </Style>
     </Page.Resources>
-    <Border Padding="100 50" Background="White">
-        <StackPanel>
-            <Grid>
+    <Border Padding="100 20 20 20" Background="White">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+                
+            <Grid Grid.Row="0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />
@@ -51,7 +58,7 @@
                 <TextBlock Grid.Column="4" Style="{StaticResource HeaderStyle}" Text="报价"/>
             </Grid>
             
-            <Grid Name="buckleSection" Visibility="Collapsed">
+            <Grid Grid.Row="1" Name="buckleSection" Visibility="Collapsed">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />
@@ -68,7 +75,7 @@
                 <TextBlock Grid.Column="5" Style="{StaticResource ErrorMessageStyle}" Text="{Binding buckleItem.PriceInputErrorMessage}" />
             </Grid>
             
-            <ListView ItemsSource="{Binding summedItemList}" BorderThickness="0" Height="450">
+            <ListView Grid.Row="2" ItemsSource="{Binding summedItemList}" BorderThickness="0" >
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <Grid>
@@ -97,8 +104,8 @@
                 </ListView.ItemContainerStyle>
             </ListView>
             
-            <Button Content="生成报表" Click="GoToProgramEndPageButton_Click" Style="{StaticResource ButtonStyle}" HorizontalAlignment="Center"/>
-        </StackPanel>
+            <Button Grid.Row="3" Content="生成报表" Click="GoToProgramEndPageButton_Click" Style="{StaticResource ButtonStyle}" HorizontalAlignment="Center"/>
+        </Grid>
 
     </Border>
 </Page>
