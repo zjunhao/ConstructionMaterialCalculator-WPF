@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "DwXOP3o4cwrcilR+hZMgQ4uNhg/GeSGdVN+ymuJRjpNeRDrNDk6657pnobsimmGS1rge6v5PdYe3TH8wYCbsaw==",
+  "dgSpecHash": "MTxTJBTaI7zrLDi2bqSmvhRS6I4kSXdX+2OWs/6kgnNvzAzUfVKg/g2qn9Z48Q9nUMn9vXfQOsPCEei4ooNpNg==",
   "success": true,
-  "projectFilePath": "M:\\Projects\\DecorationMaterialCalculator\\zh-cn\\DecorationMaterialCalculator\\ComputerIDGenerator\\ComputerIDGenerator.csproj",
+  "projectFilePath": "C:\\Users\\JZhang\\Desktop\\ConstructionMaterialCalculator-WPF\\zh-cn\\DecorationMaterialCalculator\\ComputerIDGenerator\\ComputerIDGenerator.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\JZhang\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
     "C:\\Users\\JZhang\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",
