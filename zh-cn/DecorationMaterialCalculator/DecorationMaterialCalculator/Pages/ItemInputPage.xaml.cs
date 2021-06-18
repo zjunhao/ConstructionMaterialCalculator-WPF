@@ -175,7 +175,12 @@ namespace DecorationMaterialCalculator.Pages
         {
             if (inputItemListView.SelectedItems.Count > 0)
             {
-                inputItemOC.Remove((InputItem) inputItemListView.SelectedItem);
+                // Cast to array to avoid selectedItems list change while looping through it
+                var selectedItems = inputItemListView.SelectedItems.Cast<Object>().ToArray();
+                foreach (var selectedItem in selectedItems)
+                {
+                    inputItemOC.Remove((InputItem)selectedItem);
+                }
             }
         }
 
