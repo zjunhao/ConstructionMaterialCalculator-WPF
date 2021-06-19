@@ -425,6 +425,9 @@ namespace DecorationMaterialCalculator.Services
 
         private static void FillSheetDataWithSummedItemListAndBuckleItem(SheetData sheetData, List<SummedItem> summedItems, BuckleItem buckleItem, bool buyPriceNotSellPrice)
         {
+            // Sum price for all items
+            double totalPrice = 0;
+
             // Fill in header
             Row rHeader = new Row() { RowIndex = (UInt32Value)1u };
             Cell cHeader1 = new Cell();
@@ -486,11 +489,15 @@ namespace DecorationMaterialCalculator.Services
                 cell5.DataType = CellValues.Number;
                 cell5.CellValue = new CellValue(item.TotalAreaOrLength.ToString());
                 Cell cell6 = new Cell();
-                cell6.DataType = CellValues.String;
+                cell6.DataType = CellValues.Number;
                 cell6.CellValue = new CellValue(buyPriceNotSellPrice ? item.BuyPrice: item.SellPrice);
+
                 Cell cell7 = new Cell();
-                cell7.DataType = CellValues.String;
-                cell7.CellValue = new CellValue(buyPriceNotSellPrice ? item.TotalBuyPrice.ToString() : item.TotalSellPrice.ToString());
+                cell7.DataType = CellValues.Number;
+                double itemTotalPrice = buyPriceNotSellPrice ? item.TotalBuyPrice : item.TotalSellPrice;
+                cell7.CellValue = new CellValue(itemTotalPrice.ToString());
+                totalPrice += itemTotalPrice;
+
                 Cell cell8 = new Cell();
                 cell8.DataType = CellValues.String;
                 cell8.CellValue = new CellValue(item.Memo);
@@ -528,14 +535,18 @@ namespace DecorationMaterialCalculator.Services
                 cBuckle4.DataType = CellValues.Number;
                 cBuckle4.CellValue = new CellValue(buckleItem.Quantity.ToString());
                 Cell cBuckle5 = new Cell();
-                cBuckle5.DataType = CellValues.Number;
+                cBuckle5.DataType = CellValues.String;
                 cBuckle5.CellValue = new CellValue("");
                 Cell cBuckle6 = new Cell();
-                cBuckle6.DataType = CellValues.String;
+                cBuckle6.DataType = CellValues.Number;
                 cBuckle6.CellValue = new CellValue(buyPriceNotSellPrice ? buckleItem.BuyPrice : buckleItem.SellPrice);
+
                 Cell cBuckle7 = new Cell();
-                cBuckle7.DataType = CellValues.String;
-                cBuckle7.CellValue = new CellValue(buyPriceNotSellPrice ? buckleItem.TotalBuyPrice.ToString() : buckleItem.TotalSellPrice.ToString());
+                cBuckle7.DataType = CellValues.Number;
+                double buckleTotalPrice = buyPriceNotSellPrice ? buckleItem.TotalBuyPrice : buckleItem.TotalSellPrice;
+                cBuckle7.CellValue = new CellValue(buckleTotalPrice.ToString());
+                totalPrice += buckleTotalPrice;
+                
                 Cell cBuckle8 = new Cell();
                 cBuckle8.DataType = CellValues.String;
                 cBuckle8.CellValue = new CellValue("");
@@ -556,6 +567,47 @@ namespace DecorationMaterialCalculator.Services
                 rowIndex++;
             }
 
+            // Fill in total price
+            Row rTotal = new Row() { RowIndex = (UInt32Value)rowIndex };
+            Cell cTotal1 = new Cell();
+            cTotal1.DataType = CellValues.String;
+            cTotal1.CellValue = new CellValue("");
+            Cell cTotal2 = new Cell();
+            cTotal2.DataType = CellValues.String;
+            cTotal2.CellValue = new CellValue("");
+            Cell cTotal3 = new Cell();
+            cTotal3.DataType = CellValues.String;
+            cTotal3.CellValue = new CellValue("");
+            Cell cTotal4 = new Cell();
+            cTotal4.DataType = CellValues.String;
+            cTotal4.CellValue = new CellValue("");
+            Cell cTotal5 = new Cell();
+            cTotal5.DataType = CellValues.String;
+            cTotal5.CellValue = new CellValue("");
+            Cell cTotal6 = new Cell();
+            cTotal6.DataType = CellValues.String;
+            cTotal6.CellValue = new CellValue("总计");
+            Cell cTotal7 = new Cell();
+            cTotal7.DataType = CellValues.Number;
+            cTotal7.CellValue = new CellValue(totalPrice.ToString());
+            Cell cTotal8 = new Cell();
+            cTotal8.DataType = CellValues.String;
+            cTotal8.CellValue = new CellValue("");
+            Cell cTotal9 = new Cell();
+            cTotal9.DataType = CellValues.String;
+            cTotal9.CellValue = new CellValue("");
+            rTotal.Append(cTotal1);
+            rTotal.Append(cTotal2);
+            rTotal.Append(cTotal3);
+            rTotal.Append(cTotal4);
+            rTotal.Append(cTotal5);
+            rTotal.Append(cTotal6);
+            rTotal.Append(cTotal7);
+            rTotal.Append(cTotal8);
+            rTotal.Append(cTotal9);
+            sheetData.Append(rTotal);
+
+            rowIndex++;
         }
 
         private static List<SummedItem> SortSummedItemByNameAndType(List<SummedItem> items)
