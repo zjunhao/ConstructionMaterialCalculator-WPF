@@ -89,7 +89,7 @@
             <StackPanel Grid.Row="3" Orientation="Horizontal" Margin="0 0 0 5">
                 <TextBlock Text="尺寸 (m)" Style="{StaticResource LabelStyle}"/>
                 <TextBox Name="sizeTextBox" Style="{StaticResource TextBoxStyle}" Width="1000"/>
-                <TextBlock Name="sizeErrMsgTextblock" Visibility="Hidden" Style="{StaticResource ErrorMessageStyle}"/>
+                <TextBlock Name="sizeErrMsgTextblock" Visibility="Hidden" Style="{StaticResource ErrorMessageStyle}" Width="290" />
             </StackPanel>
             
             <Button Grid.Row="4" Content="保存条目" Click="SaveButton_Click" Style="{StaticResource ButtonStyle}" Margin="0 0 0 20"/>
