@@ -1,5 +1,6 @@
 ﻿using DecorationMaterialCalculator.Services;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
@@ -55,6 +56,22 @@ namespace DecorationMaterialCalculator.Models
         private void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+    }
+
+    public class PriceCollectorComparer : IComparer<PriceCollector>
+    {
+        public int Compare(PriceCollector pc1, PriceCollector pc2)
+        {
+            if (!pc1.ProductName.Equals(pc2.ProductName))
+            {
+                return pc1.ProductName.CompareTo(pc2.ProductName);
+            }
+            else
+            {
+                return Int32.Parse(pc2.WidthOfType) - Int32.Parse(pc1.WidthOfType);
+            }
+
         }
     }
 }

@@ -43,6 +43,7 @@ namespace DecorationMaterialCalculator.Pages
             }
 
             this.priceCollectorList = CalculationService.SummedItemsToPriceCollectors(summedItemList);
+            this.priceCollectorList.Sort(new PriceCollectorComparer());
 
             DataContext = this;
         }
