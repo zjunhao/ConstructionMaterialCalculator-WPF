@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DecorationMaterialCalculator"
         mc:Ignorable="d"
-        Title="建材计算器" Height="700" Width="1200">
+        Title="建材计算器" Height="1000" Width="1500">
     <Grid>
         <Frame x:Name="mainFrame" Content="" HorizontalAlignment="Stretch" Height="Auto" VerticalAlignment="Stretch" Width="Auto" NavigationUIVisibility="Hidden"/>
 

@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:DecorationMaterialCalculator.Pages"
       mc:Ignorable="d" 
-      d:DesignHeight="700" d:DesignWidth="1200"
+      d:DesignHeight="1000" d:DesignWidth="1500"
       Title="PriceInputPage">
     <Page.Resources>
         <Style x:Key="HeaderStyle">
