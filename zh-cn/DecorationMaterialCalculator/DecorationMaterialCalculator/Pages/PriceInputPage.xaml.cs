@@ -14,8 +14,9 @@ namespace DecorationMaterialCalculator.Pages
     /// </summary>
     public partial class PriceInputPage : Page
     {
-        public List<SummedItem> summedItemList { get; set; }
         public List<InputItem> inputItemList { get; set; }
+        public List<SummedItem> summedItemList;
+        public List<PriceCollector> priceCollectorList { get; set; }
         public BuckleItem buckleItem { get; set; }
         public readonly bool needBuckle;
         public readonly string saveDirectoryPrefix;
@@ -41,6 +42,8 @@ namespace DecorationMaterialCalculator.Pages
                 buckleSection.Visibility = Visibility.Collapsed;
             }
 
+            this.priceCollectorList = CalculationService.SummedItemsToPriceCollectors(summedItemList);
+
             DataContext = this;
         }
 
@@ -48,6 +51,19 @@ namespace DecorationMaterialCalculator.Pages
         {
             // Verify price valid and not null
             if (!VerifyPriceFields()) return;
+
+            try
+            {
+                CalculationService.PopulateSummedItemsPriceFromPriceCollectors(priceCollectorList, ref summedItemList);
+            }
+            catch (Exception ex)
+            {
+                string sMessageBoxText = "输入价格未能涵盖所有条目，请联系软件商";
+                string sCaption = "报表生成失败";
+                MessageBoxButton btnMessageBox = MessageBoxButton.OK;
+                MessageBoxImage icnMessageBox = MessageBoxImage.Error;
+                MessageBox.Show(sMessageBoxText, sCaption, btnMessageBox, icnMessageBox);
+            }
 
             // Calculate total prices for general item
             foreach (SummedItem item in summedItemList)
@@ -100,21 +116,21 @@ namespace DecorationMaterialCalculator.Pages
         {
             bool allPricesFieldsValid = true;
 
-            foreach(SummedItem item in summedItemList)
+            foreach(PriceCollector priceCollector in priceCollectorList)
             {
-                if (String.IsNullOrEmpty(item.BuyPrice) || String.IsNullOrEmpty(item.SellPrice))
+                if (String.IsNullOrEmpty(priceCollector.BuyPrice) || String.IsNullOrEmpty(priceCollector.SellPrice))
                 {
-                    item.PriceInputErrorMessage = "价格不能为空";
+                    priceCollector.PriceInputErrorMessage = "价格不能为空";
                     allPricesFieldsValid = false;
                 }
-                else if (!InputVerifyService.IsPriceValid(item.BuyPrice) || !InputVerifyService.IsPriceValid(item.SellPrice))
+                else if (!InputVerifyService.IsPriceValid(priceCollector.BuyPrice) || !InputVerifyService.IsPriceValid(priceCollector.SellPrice))
                 {
-                    item.PriceInputErrorMessage = "价格格式有误";
+                    priceCollector.PriceInputErrorMessage = "价格格式有误";
                     allPricesFieldsValid = false;
                 }
                 else
                 {
-                    item.PriceInputErrorMessage = "";
+                    priceCollector.PriceInputErrorMessage = "";
                 }
             }
 

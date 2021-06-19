@@ -49,13 +49,11 @@
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
                 <TextBlock Grid.Column="0" Style="{StaticResource HeaderStyle}" Text="产品名称"/>
-                <TextBlock Grid.Column="1" Style="{StaticResource HeaderStyle}" Text="规格"/>
-                <TextBlock Grid.Column="2" Style="{StaticResource HeaderStyle}" Text="数量"/>
-                <TextBlock Grid.Column="3" Style="{StaticResource HeaderStyle}" Text="进货价"/>
-                <TextBlock Grid.Column="4" Style="{StaticResource HeaderStyle}" Text="报价"/>
+                <TextBlock Grid.Column="1" Style="{StaticResource HeaderStyle}" Text="板/线宽 (卡扣数量)"/>
+                <TextBlock Grid.Column="2" Style="{StaticResource HeaderStyle}" Text="进货价"/>
+                <TextBlock Grid.Column="3" Style="{StaticResource HeaderStyle}" Text="报价"/>
             </Grid>
             
             <Grid Grid.Row="1" Name="buckleSection" Visibility="Collapsed">
@@ -65,17 +63,15 @@
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
                 <TextBlock Grid.Column="0" Style="{StaticResource ItemLabelStyle}" Text="{Binding buckleItem.ProductName}"/>
-                <TextBlock Grid.Column="1" Style="{StaticResource ItemLabelStyle}" Text=""/>
-                <TextBlock Grid.Column="2" Style="{StaticResource ItemLabelStyle}" Text="{Binding buckleItem.Quantity}"/>
-                <TextBox Grid.Column="3"   Style="{StaticResource ItemBoxStyle}" Text="{Binding buckleItem.BuyPrice, Mode=OneWayToSource}"/>
-                <TextBox Grid.Column="4"   Style="{StaticResource ItemBoxStyle}" Text="{Binding buckleItem.SellPrice, Mode=OneWayToSource}"/>
-                <TextBlock Grid.Column="5" Style="{StaticResource ErrorMessageStyle}" Text="{Binding buckleItem.PriceInputErrorMessage}" />
+                <TextBlock Grid.Column="1" Style="{StaticResource ItemLabelStyle}" Text="{Binding buckleItem.Quantity}"/>
+                <TextBox Grid.Column="2"   Style="{StaticResource ItemBoxStyle}" Text="{Binding buckleItem.BuyPrice, Mode=OneWayToSource}"/>
+                <TextBox Grid.Column="3"   Style="{StaticResource ItemBoxStyle}" Text="{Binding buckleItem.SellPrice, Mode=OneWayToSource}"/>
+                <TextBlock Grid.Column="4" Style="{StaticResource ErrorMessageStyle}" Text="{Binding buckleItem.PriceInputErrorMessage}" />
             </Grid>
 
-            <ListView Grid.Row="2" ItemsSource="{Binding summedItemList}" BorderThickness="0" KeyboardNavigation.TabNavigation="Continue">
+            <ListView Grid.Row="2" ItemsSource="{Binding priceCollectorList}" BorderThickness="0" KeyboardNavigation.TabNavigation="Continue">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <Grid>
@@ -85,15 +81,13 @@
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
 
                             <TextBlock Grid.Column="0" Style="{StaticResource ItemLabelStyle}" Text="{Binding ProductName}" />
-                            <TextBlock Grid.Column="1" Style="{StaticResource ItemLabelStyle}" Text="{Binding Type}" />
-                            <TextBlock Grid.Column="2" Style="{StaticResource ItemLabelStyle}" Text="{Binding Quantity}" />
-                            <TextBox Grid.Column="3"   Style="{StaticResource ItemBoxStyle}" Text="{Binding BuyPrice, Mode=OneWayToSource}" />
-                            <TextBox Grid.Column="4"   Style="{StaticResource ItemBoxStyle}" Text="{Binding SellPrice, Mode=OneWayToSource}" />
-                            <TextBlock Grid.Column="5" Style="{StaticResource ErrorMessageStyle}" Text="{Binding PriceInputErrorMessage}" />
+                            <TextBlock Grid.Column="1" Style="{StaticResource ItemLabelStyle}" Text="{Binding WidthOfType}" />
+                            <TextBox Grid.Column="2"   Style="{StaticResource ItemBoxStyle}" Text="{Binding BuyPrice, Mode=OneWayToSource}" />
+                            <TextBox Grid.Column="3"   Style="{StaticResource ItemBoxStyle}" Text="{Binding SellPrice, Mode=OneWayToSource}" />
+                            <TextBlock Grid.Column="4" Style="{StaticResource ErrorMessageStyle}" Text="{Binding PriceInputErrorMessage}" />
                         </Grid>
                     </DataTemplate>
                 </ListView.ItemTemplate>

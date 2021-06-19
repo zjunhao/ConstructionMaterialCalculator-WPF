@@ -150,6 +150,53 @@ namespace DecorationMaterialCalculator.Services
                 return strnum.Split('.')[1].Length;
         }
 
+        /// <summary>
+        /// Use PriceCollector to collect price for SummedItems with same ProductName and width of Type,
+        /// then populate collected prices back to SummedItems
+        /// </summary>
+        public static List<PriceCollector> SummedItemsToPriceCollectors(List<SummedItem> summedItems)
+        {
+            List<PriceCollector> priceCollectors = new List<PriceCollector>();
+            HashSet<string> collectorIDs = new HashSet<string>();
+
+            foreach(SummedItem summedItem in summedItems)
+            {
+                StringParserService.ParseType(summedItem.Type, out int widthOfType, out int lengthOfType);
+                string id = summedItem.ProductName + "_" + widthOfType;
+                if (!collectorIDs.Contains(id))
+                {
+                    PriceCollector collector = new PriceCollector(summedItem.ProductName, widthOfType.ToString());
+                    priceCollectors.Add(collector);
+                    collectorIDs.Add(id);
+                }
+            }
+
+            return priceCollectors;
+        }
+
+        public static void PopulateSummedItemsPriceFromPriceCollectors(List<PriceCollector> priceCollectors, ref List<SummedItem> summedItems)
+        {
+            Dictionary<string, string[]> pricesDict = new Dictionary<string, string[]>();
+            foreach(PriceCollector priceCollector in priceCollectors)
+            {
+                pricesDict.Add(priceCollector.ID, new string[] { priceCollector.BuyPrice, priceCollector.SellPrice });
+            }
+
+            foreach(SummedItem summedItem in summedItems)
+            {
+                StringParserService.ParseType(summedItem.Type, out int widthOfType, out int lengthOfType);
+                string itemID = summedItem.ProductName + "_" + widthOfType;
+                
+                if (!pricesDict.ContainsKey(itemID))
+                {
+                    throw new Exception("PriceCollectors does not cover all SummedItems");
+                }
+
+                summedItem.BuyPrice = pricesDict[itemID][0];
+                summedItem.SellPrice = pricesDict[itemID][1];
+            }
+        }
+
         #endregion
 
         #region Private Methods

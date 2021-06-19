@@ -1,13 +1,10 @@
 ﻿using DecorationMaterialCalculator.Services;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
-using System.Text;
 
 namespace DecorationMaterialCalculator.Models
 {
-    public class SummedItem: INotifyPropertyChanged
+    public class SummedItem
     {
         public SummedItem(string productName, string type, string borx)
         {
@@ -29,7 +26,6 @@ namespace DecorationMaterialCalculator.Models
             clone.TotalAreaOrLength = TotalAreaOrLength;
             clone.TotalBuyPrice = TotalBuyPrice;
             clone.TotalSellPrice = TotalSellPrice;
-            clone.PriceInputErrorMessage = PriceInputErrorMessage;
 
             return clone;
         }
@@ -85,29 +81,6 @@ namespace DecorationMaterialCalculator.Models
                 _totalSellPrice = CalculationService.GetDecimalPrecision(value) <= 2 ? value : Math.Round(value, 2); ;
             }
         }
-
-        // Property used for binding in xaml to show error message
-        private string _priceInputErrorMessage = "";
-        public string PriceInputErrorMessage 
-        { 
-            get
-            {
-                return _priceInputErrorMessage;
-            }
-            set
-            {
-                _priceInputErrorMessage = value;
-                NotifyPropertyChanged();
-            }
-        }
-
-        // Implementation of INotifyPropertyChanged
-        public event PropertyChangedEventHandler PropertyChanged;
-        private void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-
     }
 
     // Compare summedItem based on BorX, ProductName and Type
